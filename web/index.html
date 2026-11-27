@@ -1,101 +1,165 @@
 <!DOCTYPE html>
-<html lang="zh-Hant-TW">
+<html lang="zh-Hant-TW" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>台灣國家公園山屋／營地 未來週末空位彙整</title>
-  <meta name="description" content="一次總覽太魯閣、雪霸、玉山三大國家公園未來 8 個週末（含國定連假夜晚）山屋床位與營地空位狀況，可篩選公園、床位/營位、最少人數，點擊直達官方申請頁。" />
+  <meta name="description" content="一次總覽太魯閣、雪霸、玉山三大國家公園未來 8 個週末（含國定連假夜晚）山屋床位與營地空位狀況，支援深淺色模式、手動送出更新要求與手機版 RWD。" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
+  <!-- Top Site Header -->
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand-group">
-        <div class="brand-badge">⛰️ 台灣百岳宿營空位雷達</div>
+        <div class="brand-top-row">
+          <span class="brand-badge">⛰️ 台灣百岳宿營空位雷達</span>
+          <span class="holiday-source-chip" id="holiday-source-badge">📅 人事行政總處 2026–2027 行事曆</span>
+        </div>
         <h1>台灣國家公園山屋／營地 未來週末空位</h1>
         <p class="subtitle">
-          彙整 <strong>太魯閣・雪霸・玉山</strong> 未來 8 個週末（含國定連假住宿夜）剩餘床位與營位，點擊格子直達官方申請／明細頁
+          一次總覽 <strong>太魯閣・雪霸・玉山</strong> 未來 8 個週末（含國定連假夜晚）剩餘床位與營位，點擊直達官方申請頁
         </p>
       </div>
-      <div class="meta-panel" id="meta-panel">
-        <div class="freshness-pill" id="freshness-pill">
-          <span class="pulse-dot"></span>
-          <span id="updated-ago-text">資料載入中…</span>
+
+      <div class="header-actions-panel">
+        <!-- Theme Toggle & Manual Refresh Trigger -->
+        <div class="action-buttons-row">
+          <button type="button" class="btn-action btn-refresh" id="open-refresh-modal-btn" title="手動送出資料更新要求">
+            <span class="icon-spin" id="refresh-btn-icon">🔄</span>
+            <span id="refresh-btn-label">手動更新資料</span>
+          </button>
+          <button type="button" class="btn-action btn-theme" id="theme-toggle-btn" title="切換深色／淺色模式" aria-label="切換深色或淺色主題">
+            <span id="theme-toggle-icon">☀️</span>
+            <span id="theme-toggle-text">淺色模式</span>
+          </button>
         </div>
-        <div class="meta-detail" id="updated-exact-text"></div>
-        <div class="park-status-pills" id="park-status-pills"></div>
+
+        <!-- Data Freshness & Park Status Pills -->
+        <div class="meta-box" id="meta-panel">
+          <div class="freshness-row">
+            <span class="pulse-dot" id="freshness-dot"></span>
+            <span class="freshness-text" id="updated-ago-text">資料載入中…</span>
+            <span class="meta-detail" id="updated-exact-text"></span>
+          </div>
+          <div class="park-status-pills" id="park-status-pills"></div>
+        </div>
       </div>
     </div>
   </header>
 
+  <!-- Live Scrape Progress Banner (shown when manual update is running) -->
+  <div id="live-progress-banner" class="live-progress-banner" hidden>
+    <div class="container progress-banner-inner">
+      <div class="progress-info-row">
+        <div class="progress-title-group">
+          <span class="spinner-inline"></span>
+          <strong id="progress-status-title">正在背景執行禮貌爬蟲更新…</strong>
+          <span id="progress-status-detail" class="progress-detail-text">準備中</span>
+        </div>
+        <div class="progress-right-group">
+          <span id="progress-percentage" class="progress-pct">0%</span>
+          <button type="button" class="btn-mini" id="reload-partial-btn" title="立即載入目前已抓完的進度">先載入已完成部分</button>
+        </div>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-bar-fill" style="width: 0%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
   <main class="container main-content">
-    <!-- Unsupported park alert container (populated dynamically if any park is unsupported) -->
+    <!-- Unsupported park alert container -->
     <div id="unsupported-alerts" class="unsupported-alerts" hidden></div>
 
-    <!-- Controls & Filter Bar -->
-    <section class="filters-card" aria-label="篩選條件">
-      <div class="filters-grid">
-        <!-- Park filter -->
-        <div class="filter-group">
+    <!-- Quick KPI / Weekend Highlight Strip -->
+    <section class="kpi-strip" id="kpi-strip" aria-label="熱門週末與連假空位快篩"></section>
+
+    <!-- Sticky Filter & Control Card -->
+    <section class="filters-card" id="filters-card" aria-label="篩選條件">
+      <!-- Primary Mobile-Friendly Top Bar -->
+      <div class="filters-top-bar">
+        <!-- Park segmented filter -->
+        <div class="filter-group filter-group-park">
           <label class="filter-label">國家公園</label>
           <div class="segmented-control" id="park-filter-group" role="group" aria-label="國家公園篩選">
-            <button type="button" class="seg-btn active" data-park="all">全部公園</button>
-            <button type="button" class="seg-btn" data-park="taroko">太魯閣</button>
-            <button type="button" class="seg-btn" data-park="sheipa">雪霸</button>
-            <button type="button" class="seg-btn" data-park="yushan">玉山</button>
+            <button type="button" class="seg-btn active" data-park="all">全部 <span class="seg-count" id="count-park-all">76</span></button>
+            <button type="button" class="seg-btn" data-park="taroko">太魯閣 <span class="seg-count" id="count-park-taroko">15</span></button>
+            <button type="button" class="seg-btn" data-park="sheipa">雪霸 <span class="seg-count" id="count-park-sheipa">34</span></button>
+            <button type="button" class="seg-btn" data-park="yushan">玉山 <span class="seg-count" id="count-park-yushan">27</span></button>
           </div>
         </div>
 
-        <!-- Accommodation Type filter (Beds / Tents) -->
-        <div class="filter-group">
-          <label class="filter-label">床位／營位</label>
-          <div class="segmented-control" id="type-filter-group" role="group" aria-label="床位或營位篩選">
-            <button type="button" class="seg-btn active" data-type="all">全部 (床+營)</button>
-            <button type="button" class="seg-btn" data-type="beds">只看床位</button>
-            <button type="button" class="seg-btn" data-type="tents">只看營位</button>
-          </div>
-        </div>
-
-        <!-- Minimum spots required -->
-        <div class="filter-group">
-          <label class="filter-label" for="min-spots-input">最少需要人數</label>
-          <div class="spots-control">
-            <div class="quick-spots" id="quick-spots-group">
-              <button type="button" class="spot-btn active" data-spots="1">1+</button>
-              <button type="button" class="spot-btn" data-spots="2">2+</button>
-              <button type="button" class="spot-btn" data-spots="4">4+</button>
-              <button type="button" class="spot-btn" data-spots="6">6+</button>
-              <button type="button" class="spot-btn" data-spots="8">8+</button>
-            </div>
-            <div class="number-input-wrap">
-              <input type="number" id="min-spots-input" min="1" max="136" value="1" aria-label="自訂最少需要人數" />
-              <span>人</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Only Available toggle & Search -->
-        <div class="filter-group filter-actions-row">
+        <!-- Only Available toggle & Mobile Filter Drawer Trigger -->
+        <div class="quick-toggles-row">
           <label class="toggle-switch" for="only-available-toggle">
             <input type="checkbox" id="only-available-toggle" />
             <span class="toggle-slider"></span>
-            <span class="toggle-label">只看有空位山屋</span>
+            <span class="toggle-label">只看有空位</span>
           </label>
 
-          <div class="search-wrap">
-            <input type="search" id="hut-search-input" placeholder="搜尋山屋或營地名稱…" aria-label="搜尋山屋或營地名稱" />
+          <button type="button" class="btn-mobile-filter-toggle" id="mobile-filter-expand-btn" aria-expanded="false">
+            <span>⚙️ 篩選條件</span>
+            <span class="filter-badge-dot" id="active-filter-badge" hidden></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Collapsible Advanced Filters on Mobile (Always visible on Desktop) -->
+      <div class="filters-collapsible" id="filters-collapsible">
+        <div class="filters-grid">
+          <!-- Accommodation Type filter (Beds / Tents) -->
+          <div class="filter-group">
+            <label class="filter-label">床位／營位類型</label>
+            <div class="segmented-control" id="type-filter-group" role="group" aria-label="床位或營位篩選">
+              <button type="button" class="seg-btn active" data-type="all">全部 (床+營)</button>
+              <button type="button" class="seg-btn" data-type="beds">🛏️ 只看床位</button>
+              <button type="button" class="seg-btn" data-type="tents">⛺ 只看營位</button>
+            </div>
+          </div>
+
+          <!-- Minimum spots required -->
+          <div class="filter-group">
+            <label class="filter-label" for="min-spots-input">最少需要人數</label>
+            <div class="spots-control">
+              <div class="quick-spots" id="quick-spots-group">
+                <button type="button" class="spot-btn active" data-spots="1">1+</button>
+                <button type="button" class="spot-btn" data-spots="2">2+</button>
+                <button type="button" class="spot-btn" data-spots="4">4+</button>
+                <button type="button" class="spot-btn" data-spots="6">6+</button>
+                <button type="button" class="spot-btn" data-spots="8">8+</button>
+              </div>
+              <div class="number-input-wrap">
+                <input type="number" id="min-spots-input" min="1" max="136" value="1" aria-label="自訂最少需要人數" />
+                <span>人</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Search & Reset -->
+          <div class="filter-group">
+            <label class="filter-label" for="hut-search-input">搜尋山屋／營地</label>
+            <div class="search-and-reset">
+              <div class="search-wrap">
+                <input type="search" id="hut-search-input" placeholder="輸入名稱（如：雲稜、七卡、圓峰）…" aria-label="搜尋山屋或營地名稱" />
+              </div>
+              <button type="button" class="btn-reset" id="reset-filters-btn" title="重設所有篩選條件">重設</button>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Legend & View Switcher Bar -->
+      <!-- Legend & View Mode Switcher Bar -->
       <div class="toolbar-footer">
         <div class="legend-list" aria-label="狀態圖例">
-          <span class="legend-item"><span class="legend-swatch swatch-available"></span>有空位 (點擊申請)</span>
-          <span class="legend-item"><span class="legend-swatch swatch-low"></span>名額不足 (&lt;需求人數)</span>
+          <span class="legend-item"><span class="legend-swatch swatch-available"></span>有空位</span>
+          <span class="legend-item"><span class="legend-swatch swatch-low"></span>名額不足 (&lt;需求)</span>
           <span class="legend-item"><span class="legend-swatch swatch-full"></span>額滿 (0)</span>
-          <span class="legend-item"><span class="legend-swatch swatch-lottery"></span>抽籤制 (排雲山莊)</span>
-          <span class="legend-item"><span class="legend-swatch swatch-not-open"></span>未開放／已截止</span>
+          <span class="legend-item"><span class="legend-swatch swatch-lottery"></span>抽籤制 (排雲)</span>
+          <span class="legend-item"><span class="legend-swatch swatch-not-open"></span>未開放／截止</span>
           <span class="legend-item"><span class="legend-swatch swatch-closed"></span>封閉</span>
         </div>
 
@@ -103,16 +167,16 @@
           <span id="summary-counter" class="summary-counter">顯示 0 / 0 處宿營地</span>
           <div class="segmented-control view-mode-group" id="view-mode-group">
             <button type="button" class="seg-btn active" data-view="matrix">📊 矩陣總覽</button>
-            <button type="button" class="seg-btn" data-view="cards">📱 單週末卡片</button>
+            <button type="button" class="seg-btn" data-view="cards">📱 週末卡片</button>
           </div>
         </div>
       </div>
 
-      <!-- Weekend Quick Jump Pills (helpful on both mobile and desktop) -->
+      <!-- Weekend Quick Jump Pills -->
       <div class="weekend-jump-bar" id="weekend-jump-bar" aria-label="未來 8 個週末快速跳轉"></div>
     </section>
 
-    <!-- Loading & Error State -->
+    <!-- Loading State -->
     <div id="loading-state" class="state-box">
       <div class="spinner"></div>
       <p>正在讀取山屋與營地空位資料…</p>
@@ -121,8 +185,7 @@
     <!-- Matrix View -->
     <section id="matrix-view-section" class="matrix-section" hidden>
       <div class="matrix-scroll-hint">
-        <span>💡 提示：左右滑動可檢視未來 8 個週末所有住宿夜；點擊任一格子可直達官方該山屋查詢與申請頁。</span>
-        <span id="holiday-source-badge" class="holiday-source-badge"></span>
+        <span>💡 點擊任一格子可檢視「審核／排隊／承載量」明細或直達官方申請頁；手機版可左右滑動或切換「📱 週末卡片」模式。</span>
       </div>
       <div class="matrix-table-wrapper" id="matrix-table-wrapper">
         <table class="matrix-table" id="matrix-table">
@@ -139,6 +202,68 @@
     </section>
   </main>
 
+  <!-- Manual Update Request Modal -->
+  <div id="refresh-modal-backdrop" class="modal-backdrop" hidden>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="refresh-modal-title">
+      <div class="modal-header">
+        <h3 id="refresh-modal-title">🔄 手動送出資料更新要求</h3>
+        <button type="button" class="modal-close-btn" id="close-refresh-modal-btn" aria-label="關閉視窗">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">
+          你可以選擇立即重新讀取伺服器上的最新 JSON 快取，或向本機爬蟲引擎送出即時禮貌重爬要求（遵守單一併發、每請求間隔 1.5 秒規範）。
+        </p>
+
+        <div class="refresh-options-list">
+          <div class="refresh-option-card">
+            <div class="refresh-option-info">
+              <strong>⚡ 快速重新載入最新 JSON 資料檔</strong>
+              <span>立即略過瀏覽器快取，重新載入目前最新產出的 `data/*.json`（約 0.2 秒）。</span>
+            </div>
+            <button type="button" class="btn-primary-action" id="btn-reload-json-now">立即重載</button>
+          </div>
+
+          <div class="refresh-option-card">
+            <div class="refresh-option-info">
+              <strong>🎯 指定國家公園即時重新爬取</strong>
+              <span>勾選欲更新的國家公園，由背景執行 ASP.NET PostBack 禮貌抓取並即時合併資料：</span>
+              <div class="refresh-park-checkboxes">
+                <label class="checkbox-pill"><input type="checkbox" name="refresh-park" value="taroko" checked /> 太魯閣 (15處 · 約65秒)</label>
+                <label class="checkbox-pill"><input type="checkbox" name="refresh-park" value="yushan" /> 玉山 (27處 · 約2分鐘)</label>
+                <label class="checkbox-pill"><input type="checkbox" name="refresh-park" value="sheipa" /> 雪霸 (34處 · 約2.5分鐘)</label>
+              </div>
+            </div>
+            <button type="button" class="btn-primary-action btn-accent" id="btn-trigger-targeted-scrape">送出爬取要求</button>
+          </div>
+
+          <div class="refresh-option-card">
+            <div class="refresh-option-info">
+              <strong>🏔️ 完整重新爬取全部三座國家公園</strong>
+              <span>重新抓取太魯閣、雪霸、玉山共 76 處山屋／營地 × 3 個月完整日曆（約 5.5 分鐘）。</span>
+            </div>
+            <button type="button" class="btn-primary-action" id="btn-trigger-full-scrape">完整重爬三園</button>
+          </div>
+        </div>
+
+        <div id="refresh-modal-feedback" class="modal-feedback" hidden></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cell Detail Bottom Sheet / Modal (Great for mobile touch & desktop inspection) -->
+  <div id="cell-detail-backdrop" class="modal-backdrop" hidden>
+    <div class="modal-dialog modal-bottom-sheet" role="dialog" aria-modal="true" aria-labelledby="cell-detail-title">
+      <div class="modal-header">
+        <div>
+          <span class="detail-park-tag" id="cell-detail-park">國家公園</span>
+          <h3 id="cell-detail-title">山屋名稱</h3>
+        </div>
+        <button type="button" class="modal-close-btn" id="close-cell-detail-btn" aria-label="關閉明細">✕</button>
+      </div>
+      <div class="modal-body" id="cell-detail-body"></div>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-attribution">
@@ -153,7 +278,7 @@
           ｜<span class="disclaimer-highlight">實際名額、抽籤與路線開放狀態以官方網站即時公告為準</span>
         </p>
         <p class="footer-secondary" id="footer-calendar-note">
-          台灣行事曆基準：行政院人事行政總處「政府行政機關辦公日曆表」（內建 2026–2027 國定假日與連假清單）。本網站為純靜態加值彙整工具，不在瀏覽器端直接對官方網站發送請求。
+          台灣行事曆基準：行政院人事行政總處「政府行政機關辦公日曆表」（內建 2026–2027 國定假日與連假清單）。本網站不在瀏覽器端直接對官方網站發送爬蟲請求。
         </p>
       </div>
     </div>

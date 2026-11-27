@@ -6,6 +6,7 @@ import logging
 import shutil
 import time
 from pathlib import Path
+from typing import Callable
 import httpx
 
 from .models import Availability, Hut, ParkId
@@ -167,22 +168,34 @@ def run_full_scrape(
     interval: float = DEFAULT_INTERVAL_SECONDS,
     parks: list[ParkId] | None = None,
     http_client: PoliteHttpClient | None = None,
+    progress_callback: Callable[[dict], None] | None = None,
+    merge_existing: bool = False,
 ) -> dict:
-    """Scrape all supported parks and write huts.json, availability.json, meta.json."""
+    """Scrape supported parks and write huts.json, availability.json, meta.json."""
     target_parks: list[ParkId] = parks or ["taroko", "sheipa", "yushan"]
     output_dir.mkdir(parents=True, exist_ok=True)
 
     owns_http = http_client is None
     http = http_client or PoliteHttpClient(interval=interval)
 
-    all_huts: list[Hut] = []
-    all_availability: list[Availability] = []
+    scraped_huts: list[Hut] = []
+    scraped_availability: list[Availability] = []
     parks_meta: dict[str, dict] = {}
 
     try:
         for park in target_parks:
             base_url = PARK_BASE_URLS[park]
             logger.info("=== Scraping park: %s (%s) ===", park, base_url)
+            if progress_callback:
+                progress_callback(
+                    {
+                        "phase": "park_init",
+                        "park": park,
+                        "hut_name": "讀取總表頁...",
+                        "park_index": 0,
+                        "park_total": 0,
+                    }
+                )
             try:
                 main_resp = http.request("GET", base_url)
                 park_huts = parse_main_page(park, main_resp.text, base_url=base_url)
@@ -211,7 +224,7 @@ def run_full_scrape(
                 }
                 continue
 
-            all_huts.extend(park_huts)
+            scraped_huts.extend(park_huts)
             success_count = 0
             failed_huts: list[dict] = []
 
@@ -224,9 +237,20 @@ def run_full_scrape(
                     hut.name,
                     hut.node_id,
                 )
+                if progress_callback:
+                    progress_callback(
+                        {
+                            "phase": "scraping_hut",
+                            "park": park,
+                            "hut_id": hut.id,
+                            "hut_name": hut.name,
+                            "park_index": idx,
+                            "park_total": len(park_huts),
+                        }
+                    )
                 try:
                     hut_avail = scrape_hut_availability(http, hut, months_ahead=months_ahead)
-                    all_availability.extend(hut_avail)
+                    scraped_availability.extend(hut_avail)
                     success_count += 1
                 except Exception as exc:
                     logger.error("Failed scraping hut %s (%s): %s", hut.id, hut.name, exc)
@@ -251,32 +275,62 @@ def run_full_scrape(
         if owns_http:
             http.close()
 
-    total_success = sum(p["success_count"] for p in parks_meta.values())
-    total_failed = sum(p["failed_count"] for p in parks_meta.values())
-    all_failed_huts = [fh for p in parks_meta.values() for fh in p["failed_huts"]]
+    huts_path = output_dir / "huts.json"
+    avail_path = output_dir / "availability.json"
+    meta_path = output_dir / "meta.json"
+
+    final_huts_dicts = [h.to_dict() for h in scraped_huts]
+    final_avail_dicts = [a.to_dict() for a in scraped_availability]
+
+    # Merge with existing data if only a subset of parks was scraped
+    if merge_existing and huts_path.exists() and avail_path.exists() and meta_path.exists():
+        try:
+            old_huts = json.loads(huts_path.read_text(encoding="utf-8"))
+            old_avail = json.loads(avail_path.read_text(encoding="utf-8"))
+            old_meta = json.loads(meta_path.read_text(encoding="utf-8"))
+
+            scraped_park_set = set(target_parks)
+            kept_huts = [h for h in old_huts if h.get("park") not in scraped_park_set]
+            kept_hut_ids = {h["id"] for h in kept_huts}
+            kept_avail = [a for a in old_avail if a.get("hut_id") in kept_hut_ids]
+
+            # Order parks consistently: taroko, sheipa, yushan
+            park_order = {"taroko": 0, "sheipa": 1, "yushan": 2}
+            final_huts_dicts = sorted(
+                kept_huts + final_huts_dicts,
+                key=lambda x: park_order.get(x.get("park", ""), 99),
+            )
+            final_avail_dicts = kept_avail + final_avail_dicts
+
+            merged_parks_meta = dict(old_meta.get("parks", {}))
+            merged_parks_meta.update(parks_meta)
+            parks_meta = merged_parks_meta
+        except Exception as exc:
+            logger.warning("Could not merge with existing files, writing fresh: %s", exc)
+
+    total_huts_count = sum(p.get("total_huts", 0) for p in parks_meta.values()) or len(final_huts_dicts)
+    total_success = sum(p.get("success_count", 0) for p in parks_meta.values())
+    total_failed = sum(p.get("failed_count", 0) for p in parks_meta.values())
+    all_failed_huts = [fh for p in parks_meta.values() for fh in p.get("failed_huts", [])]
 
     meta = {
         "fetched_at": datetime.datetime.now(datetime.timezone.utc).astimezone().isoformat(),
         "months_ahead": months_ahead,
         "request_interval_seconds": interval,
         "user_agent": USER_AGENT,
-        "total_huts": len(all_huts),
+        "total_huts": total_huts_count,
         "success_count": total_success,
         "failed_count": total_failed,
         "failed_huts": all_failed_huts,
         "parks": parks_meta,
     }
 
-    huts_path = output_dir / "huts.json"
-    avail_path = output_dir / "availability.json"
-    meta_path = output_dir / "meta.json"
-
     huts_path.write_text(
-        json.dumps([h.to_dict() for h in all_huts], ensure_ascii=False, indent=2),
+        json.dumps(final_huts_dicts, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
     avail_path.write_text(
-        json.dumps([a.to_dict() for a in all_availability], ensure_ascii=False, indent=2),
+        json.dumps(final_avail_dicts, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
     meta_path.write_text(
@@ -295,8 +349,8 @@ def run_full_scrape(
     logger.info(
         "Scrape complete: %d/%d huts succeeded (%d availability records written to %s)",
         total_success,
-        len(all_huts),
-        len(all_availability),
+        total_huts_count,
+        len(final_avail_dicts),
         output_dir,
     )
     return meta
