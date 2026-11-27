@@ -21,6 +21,8 @@ jobs:
   scrape-and-deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    env:
+      TZ: Asia/Taipei # 爬蟲用「今天」決定抓哪幾個月，要用台灣日期
 
     steps:
       - name: Checkout repository
