@@ -1,0 +1,129 @@
+/* ==========================================================================
+   TOKENS — 唯一允許寫死色碼／字級／間距的地方（原子設計第 0 層）
+   Seed → Map → Alias：元件只准引用下方 Alias 角色。
+   色票來源：Coolors 8fd694-7dba84-77ad78-6f8f72-504b43（苔綠 → 土褐），
+   再依侘寂語彙補上 錆（額滿）、黃土（不足）、藍鼠（抽籤）。
+   ========================================================================== */
+
+:root {
+  /* ---- Seed：字型 ---- */
+  --font-display: "LXGW WenKai TC", "Kaiti TC", "DFKai-SB", "BiauKai", serif;
+  --font-body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --font-num: "Barlow Semi Condensed", "Arial Narrow", "Noto Sans TC", sans-serif;
+
+  /* ---- Map：字級（基準 16px × Major Third 1.25） ----
+     最大字 = 16 × 1.25^5 ≈ 49px，只給主視覺答案句用。 */
+  --fs-micro: 0.6875rem;   /* 11 · 表頭小字、星期 */
+  --fs-caption: 0.8125rem; /* 13 · 註解、圖例 */
+  --fs-body: 1rem;         /* 16 · 內文 */
+  --fs-title: 1.25rem;     /* 20 · 區塊標題、格內數字 */
+  --fs-headline: 1.5625rem;/* 25 · 對話框標題 */
+  --fs-display: clamp(1.9375rem, 1.35rem + 2.6vw, 3.0625rem); /* 31 → 49 */
+
+  /* SVG 文字用 viewBox 座標單位（隨圖等比縮放），不可用 rem */
+  --svg-fs-s: 11px;
+  --svg-fs-m: 12px;
+  --svg-fs-l: 13px;
+  --svg-fs-xl: 15px;
+  --svg-fs-xxl: 18px;
+
+  --lh-tight: 1.15;
+  --lh-snug: 1.35;
+  --lh-body: 1.6;
+
+  /* ---- Map：間距（4px 底） ---- */
+  --sp-1: 0.125rem; /* 2 */
+  --sp-2: 0.25rem;  /* 4 */
+  --sp-3: 0.5rem;   /* 8 */
+  --sp-4: 0.75rem;  /* 12 */
+  --sp-5: 1rem;     /* 16 */
+  --sp-6: 1.5rem;   /* 24 */
+  --sp-7: 2rem;     /* 32 */
+  --sp-8: 3rem;     /* 48 */
+  --sp-9: 4.5rem;   /* 72 */
+
+  /* ---- Map：尺寸 ---- */
+  --cell-w: 3rem;
+  --cell-h: 2.5rem;
+  --name-col: 13.5rem;
+  --tap: 2.75rem;       /* 44px 最小點擊尺寸 */
+  --page-max: 82rem;
+  --line: 1px;
+  --line-bold: 1.5px;
+
+  /* 侘寂的不完美圓角：四角刻意不等 */
+  --r-s: 3px 5px 4px 6px;
+  --r-m: 6px 10px 7px 12px;
+  --r-l: 14px 22px 16px 26px;
+  --r-pill: 999px;
+
+  /* ---- 動態 ---- */
+  --ease-ink: cubic-bezier(0.22, 0.8, 0.3, 1);
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 320ms;
+  --dur-slow: 900ms;
+  --dur-ink: 1600ms;
+
+  /* ---- Seed：顏色（日・石紙） ---- */
+  --c-paper: #e7e8df;
+  --c-paper-2: #eff0e9;
+  --c-paper-3: #f6f6f1;
+  --c-ink: #2b2924;
+  --c-ink-2: #5d5a51;
+  --c-ink-3: #8a877c;
+  --c-rule: #cdcdc1;
+  --c-moss: #4f6f54;
+  --c-moss-lite: #8fd694;
+  --c-rust: #a14f37;
+  --c-ochre: #a07a2c;
+  --c-indigo: #4c5b78;
+  --c-on-strong: #f6f6f1;
+  --c-shadow: rgba(43, 41, 36, 0.12);
+  --c-scrim: rgba(43, 41, 36, 0.38);
+
+  /* ---- Alias：角色（元件只用這一層） ---- */
+  --bg: var(--c-paper);
+  --surface: var(--c-paper-2);
+  --surface-raised: var(--c-paper-3);
+  --text: var(--c-ink);
+  --text-muted: var(--c-ink-2);
+  --text-faint: var(--c-ink-3);
+  --border: var(--c-rule);
+  --primary: var(--c-moss);
+  --on-primary: var(--c-on-strong);
+  --st-open: var(--c-moss);
+  --st-open-hi: var(--c-moss-lite);
+  --st-low: var(--c-ochre);
+  --st-full: var(--c-rust);
+  --st-lottery: var(--c-indigo);
+  --st-na: var(--c-ink-3);
+  --focus: var(--c-indigo);
+  --shadow: 0 1px 0 var(--c-shadow), 0 12px 32px -18px var(--c-shadow);
+  --scrim: var(--c-scrim);
+  --grain-opacity: 0.5;
+
+  color-scheme: light;
+}
+
+/* ---- 夜・墨山（暗色不是反轉：深苔炭底，非純黑） ---- */
+:root[data-theme="night"] {
+  --c-paper: #1c1e1a;
+  --c-paper-2: #23261f;
+  --c-paper-3: #2b2e27;
+  --c-ink: #e3e1d6;
+  --c-ink-2: #b2afa3;
+  --c-ink-3: #7f7c71;
+  --c-rule: #3a3d34;
+  --c-moss: #8fbf91;
+  --c-moss-lite: #b4e3b6;
+  --c-rust: #d98b6f;
+  --c-ochre: #d4b26a;
+  --c-indigo: #a3b1cf;
+  --c-on-strong: #1c1e1a;
+  --c-shadow: rgba(0, 0, 0, 0.45);
+  --c-scrim: rgba(10, 11, 9, 0.6);
+  --grain-opacity: 0.28;
+
+  color-scheme: dark;
+}

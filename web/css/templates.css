@@ -1,0 +1,120 @@
+/* ==========================================================================
+   TEMPLATES — 版面骨架與響應式規則
+   不對稱留白：內容靠左、右側留氣（侘寂的「間」）
+   ========================================================================== */
+
+.wrap {
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--sp-7);
+}
+
+.hero.wrap {
+  padding-right: clamp(var(--sp-7), 12vw, 12rem);
+}
+
+/* ---- 平板 ---- */
+@media (max-width: 960px) {
+  .wrap {
+    padding-inline: var(--sp-5);
+  }
+
+  .hero.wrap {
+    padding-right: var(--sp-5);
+  }
+
+  :root {
+    --name-col: 11rem;
+  }
+}
+
+/* ---- 手機：表格只顯示選中的週末，靠稜線切換 ---- */
+@media (max-width: 720px) {
+  :root {
+    --name-col: 8.5rem;
+    --cell-w: 3.25rem;
+  }
+
+  .hero {
+    padding-top: var(--sp-6);
+  }
+
+  .fresh-long,
+  .mark small {
+    display: none;
+  }
+
+  .top-row {
+    gap: var(--sp-3);
+  }
+
+  .top-row .btn {
+    padding-inline: var(--sp-3);
+  }
+
+  .controls-toggle {
+    display: inline-flex;
+  }
+
+  .controls-row {
+    gap: var(--sp-3) var(--sp-5);
+  }
+
+  .controls:not(.is-open) .ctl-more {
+    display: none;
+  }
+
+  .ctl-grow {
+    flex-basis: 100%;
+  }
+
+  .seg button {
+    padding-inline: var(--sp-3);
+  }
+
+  .seg button::after {
+    left: var(--sp-3);
+    right: var(--sp-3);
+  }
+
+  .grid [data-wk]:not(.is-sel) {
+    display: none;
+  }
+
+  .grid .is-sel {
+    background: transparent;
+  }
+
+  .grid th.night.wk-start,
+  .grid td.wk-start,
+  .grid th.wk {
+    border-left: 0;
+  }
+
+  .grid-scroll {
+    max-height: none;
+    border-radius: var(--r-s);
+    margin-inline: calc(var(--sp-5) * -1);
+  }
+
+  .grid .corner,
+  .grid tbody th,
+  .park-row th {
+    padding-left: var(--sp-4);
+  }
+
+  .hut-name {
+    white-space: normal;
+  }
+
+  .toasts {
+    right: var(--sp-5);
+  }
+
+  .sheet {
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}

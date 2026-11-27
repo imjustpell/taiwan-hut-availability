@@ -1,0 +1,260 @@
+/* ==========================================================================
+   ATOMS — 不可再拆的最小元件：按鈕、輸入框、色樣、標記、格子
+   ========================================================================== */
+
+/* ---- 按鈕 ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+  min-height: var(--tap);
+  padding: 0 var(--sp-5);
+  border: var(--line) solid var(--border);
+  border-radius: var(--r-m);
+  background: transparent;
+  color: var(--text);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition: background-color var(--dur-fast), border-color var(--dur-fast), transform var(--dur-fast) var(--ease-out);
+}
+
+.btn:hover {
+  border-color: var(--text-muted);
+  background: var(--surface);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+}
+
+.btn--primary:hover {
+  background: var(--text);
+  border-color: var(--text);
+}
+
+.btn--quiet {
+  border-color: transparent;
+}
+
+.btn[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ---- 輸入框 ---- */
+.field {
+  width: 100%;
+  min-height: var(--tap);
+  padding: 0 var(--sp-4);
+  border: 0;
+  border-bottom: var(--line-bold) solid var(--border);
+  border-radius: 0;
+  background: transparent;
+  font-size: var(--fs-body);
+  transition: border-color var(--dur-fast);
+}
+
+.field::placeholder {
+  color: var(--text-faint);
+}
+
+.field:focus {
+  outline: none;
+  border-bottom-color: var(--primary);
+}
+
+.field::-webkit-search-cancel-button {
+  filter: grayscale(1);
+}
+
+/* ---- 勾選框 ---- */
+.check-box {
+  appearance: none;
+  flex: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: 0;
+  border: var(--line-bold) solid var(--text-muted);
+  border-radius: var(--r-s);
+  background: transparent;
+  display: grid;
+  place-content: center;
+  transition: background-color var(--dur-fast), border-color var(--dur-fast);
+}
+
+.check-box::after {
+  content: "";
+  width: 0.55rem;
+  height: 0.3rem;
+  border-left: var(--line-bold) solid var(--on-primary);
+  border-bottom: var(--line-bold) solid var(--on-primary);
+  transform: rotate(-45deg) translate(1px, -1px) scale(0);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.check-box:checked {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.check-box:checked::after {
+  transform: rotate(-45deg) translate(1px, -1px) scale(1);
+}
+
+/* ---- 圖例色樣 ---- */
+.sw {
+  display: inline-block;
+  flex: none;
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: var(--r-s);
+  vertical-align: -0.1em;
+}
+
+.sw--open { background: var(--st-open); }
+.sw--low { box-shadow: inset 0 0 0 var(--line-bold) var(--st-low); }
+.sw--full { background: repeating-linear-gradient(135deg, var(--st-full) 0 2px, transparent 2px 5px); box-shadow: inset 0 0 0 var(--line) var(--st-full); }
+.sw--lottery { box-shadow: inset 0 0 0 var(--line-bold) var(--st-lottery); background: radial-gradient(circle, var(--st-lottery) 0 2px, transparent 2.5px); }
+.sw--na { background: radial-gradient(circle, var(--st-na) 0 1.5px, transparent 2px); box-shadow: inset 0 0 0 var(--line) var(--border); }
+.sw--closed { background: repeating-linear-gradient(45deg, var(--text-faint) 0 1px, transparent 1px 4px); }
+
+/* ---- 呼吸點（資料新鮮度） ---- */
+.dot {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--st-open);
+  animation: breathe 3.6s var(--ease-out) infinite;
+}
+
+.dot--stale { background: var(--st-low); }
+.dot--busy { background: var(--st-lottery); animation-duration: 1.2s; }
+
+@keyframes breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* ---- 宿營種類記號：地圖圖例式，不用 emoji ---- */
+.glyph {
+  display: inline-flex;
+  gap: 1px;
+  color: var(--text-faint);
+  font-family: var(--font-num);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.08em;
+}
+
+.glyph svg {
+  width: 0.75rem;
+  height: 0.75rem;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+}
+
+/* ---- 小標籤 ---- */
+.tag {
+  display: inline-block;
+  padding: 0 var(--sp-2);
+  border-radius: var(--r-s);
+  font-size: var(--fs-micro);
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: var(--st-full);
+  box-shadow: inset 0 0 0 var(--line) currentColor;
+  white-space: nowrap;
+}
+
+/* ---- 空位格：整個介面的最小資訊單位 ----
+   --f（0–1）= 剩餘／承載。越空墨色越深，像宣紙吸墨。 */
+.cell {
+  --f: 0;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: calc(var(--cell-w) - var(--sp-2));
+  height: calc(var(--cell-h) - var(--sp-2));
+  margin: var(--sp-1) auto;
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-s);
+  background: transparent;
+  font-family: var(--font-num);
+  font-size: var(--fs-title);
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast);
+}
+
+.cell:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 var(--line) var(--text-muted);
+}
+
+.cell[data-s="open"] {
+  color: var(--text);
+  background: color-mix(in oklab, var(--st-open) calc(14% + var(--f) * 62%), transparent);
+}
+
+.cell[data-s="open"][data-deep] {
+  color: var(--on-primary);
+}
+
+.cell[data-s="low"] {
+  color: var(--st-low);
+  box-shadow: inset 0 0 0 var(--line-bold) color-mix(in oklab, var(--st-low) 55%, transparent);
+}
+
+.cell[data-s="full"] {
+  color: var(--st-full);
+  font-family: var(--font-display);
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  background: repeating-linear-gradient(135deg, color-mix(in oklab, var(--st-full) 16%, transparent) 0 2px, transparent 2px 6px);
+}
+
+.cell[data-s="lottery"] {
+  color: var(--st-lottery);
+  font-family: var(--font-display);
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  box-shadow: inset 0 0 0 var(--line) color-mix(in oklab, var(--st-lottery) 60%, transparent);
+}
+
+.cell[data-s="na"] {
+  color: var(--st-na);
+  font-size: var(--fs-caption);
+}
+
+.cell[data-s="closed"] {
+  color: var(--text-faint);
+  font-family: var(--font-display);
+  font-size: var(--fs-micro);
+  background: repeating-linear-gradient(45deg, color-mix(in oklab, var(--text-faint) 30%, transparent) 0 1px, transparent 1px 5px);
+}
+
+/* 首次載入：一欄一欄像墨暈開（共同命運：同一晚的格子一起出現） */
+.is-inking .cell {
+  animation: seep var(--dur-slow) var(--ease-ink) both;
+  animation-delay: calc(var(--col, 0) * 45ms);
+}
+
+@keyframes seep {
+  from {
+    opacity: 0;
+    filter: blur(3px);
+    transform: scale(0.92);
+  }
+}

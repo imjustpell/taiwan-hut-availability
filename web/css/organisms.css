@@ -1,0 +1,649 @@
+/* ==========================================================================
+   ORGANISMS — 頁面上可獨立辨識的區塊
+   ========================================================================== */
+
+/* ---- 頁首 ---- */
+.top {
+  border-bottom: var(--line) solid var(--border);
+}
+
+.top-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-5);
+  min-height: calc(var(--tap) + var(--sp-5));
+}
+
+.mark {
+  margin: 0 auto 0 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-title);
+  letter-spacing: 0.12em;
+}
+
+.mark small {
+  margin-left: var(--sp-3);
+  font-family: var(--font-body);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+}
+
+/* ---- 更新進度：一條細墨線，從左往右滲 ---- */
+.inkbar {
+  position: relative;
+  height: 2px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.inkbar-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  background: var(--st-lottery);
+  transition: width var(--dur-slow) var(--ease-ink);
+}
+
+.inkbar-text {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-5);
+  padding: var(--sp-2) 0;
+  font-size: var(--fs-caption);
+  color: var(--text-muted);
+}
+
+/* ---- 主視覺：答案句＋空位稜線 ---- */
+.hero {
+  padding-top: var(--sp-8);
+  padding-bottom: var(--sp-6);
+}
+
+.eyebrow {
+  margin: 0 0 var(--sp-4);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.24em;
+  color: var(--text-faint);
+}
+
+.eyebrow b {
+  font-weight: 500;
+  color: var(--st-full);
+  letter-spacing: 0.12em;
+}
+
+.answer {
+  margin: 0;
+  max-width: 18em;
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  font-weight: 400;
+  line-height: var(--lh-tight);
+  letter-spacing: 0.02em;
+  text-wrap: balance;
+}
+
+.answer .num {
+  font-family: var(--font-num);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--primary);
+}
+
+.answer-sub {
+  margin: var(--sp-4) 0 0;
+  min-height: 1.6em;
+  font-size: var(--fs-caption);
+  color: var(--text-muted);
+}
+
+.answer-sub .num {
+  font-family: var(--font-num);
+  font-weight: 600;
+  font-size: var(--fs-body);
+  color: var(--text);
+}
+
+.answer.is-swapping,
+.answer-sub.is-swapping {
+  animation: ink-in var(--dur-mid) var(--ease-ink);
+}
+
+@keyframes ink-in {
+  from {
+    opacity: 0;
+    filter: blur(2px);
+    transform: translateY(4px);
+  }
+}
+
+.ridge {
+  margin: var(--sp-7) 0 0;
+}
+
+.ridge-scroll {
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin-inline: calc(var(--sp-5) * -1);
+  padding-inline: var(--sp-5);
+}
+
+.ridge-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.ridge svg {
+  width: 100%;
+  min-width: 40rem;
+  height: auto;
+  overflow: visible;
+}
+
+.ridge figcaption {
+  margin-top: var(--sp-3);
+  font-size: var(--fs-caption);
+  color: var(--text-faint);
+}
+
+.r-grid {
+  stroke: var(--border);
+  stroke-width: 1;
+  stroke-dasharray: 2 5;
+  fill: none;
+}
+
+.r-grid-label {
+  fill: var(--text-faint);
+  font-family: var(--font-num);
+  font-size: var(--svg-fs-s);
+}
+
+.r-ground {
+  stroke: var(--text-muted);
+  stroke-width: 1;
+  fill: none;
+}
+
+.r-mass {
+  cursor: pointer;
+  outline: none;
+}
+
+.r-area {
+  fill: color-mix(in oklab, var(--st-open) 16%, transparent);
+  transition: fill var(--dur-mid) var(--ease-out);
+}
+
+.r-line {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.55;
+  transition: opacity var(--dur-mid), stroke-width var(--dur-mid);
+}
+
+.r-mass:hover .r-area,
+.r-mass:focus-visible .r-area {
+  fill: color-mix(in oklab, var(--st-open) 30%, transparent);
+}
+
+.r-mass:focus-visible .r-line {
+  stroke: var(--focus);
+  opacity: 1;
+}
+
+.r-mass.is-sel .r-area {
+  fill: color-mix(in oklab, var(--st-open) 58%, transparent);
+}
+
+.r-mass.is-sel .r-line {
+  opacity: 1;
+  stroke-width: 2.2;
+}
+
+.r-peak {
+  fill: var(--text-muted);
+  font-family: var(--font-num);
+  font-size: var(--svg-fs-xl);
+  font-weight: 600;
+  text-anchor: middle;
+}
+
+.r-mass.is-sel .r-peak {
+  fill: var(--text);
+  font-size: var(--svg-fs-xxl);
+}
+
+.r-label {
+  fill: var(--text-muted);
+  font-family: var(--font-num);
+  font-size: var(--svg-fs-l);
+  font-weight: 600;
+  text-anchor: middle;
+}
+
+.r-holiday {
+  fill: var(--st-full);
+  font-family: var(--font-display);
+  font-size: var(--svg-fs-m);
+  text-anchor: middle;
+}
+
+.r-mass.is-sel .r-label {
+  fill: var(--text);
+}
+
+.r-enso {
+  fill: none;
+  stroke: var(--st-full);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.r-enso-thin {
+  stroke-width: 0.9;
+  opacity: 0.6;
+}
+
+/* 首次載入：墨線由左往右畫出 */
+.is-drawing .r-line {
+  stroke-dasharray: var(--len);
+  stroke-dashoffset: var(--len);
+  animation: draw var(--dur-ink) var(--ease-ink) forwards;
+  animation-delay: calc(var(--i) * 110ms);
+}
+
+.is-drawing .r-area,
+.is-drawing .r-peak,
+.is-drawing .r-label,
+.is-drawing .r-holiday {
+  animation: fade var(--dur-slow) var(--ease-out) both;
+  animation-delay: calc(var(--i) * 110ms + 500ms);
+}
+
+.r-enso.is-drawn {
+  stroke-dasharray: var(--len);
+  stroke-dashoffset: var(--len);
+  animation: draw 700ms var(--ease-ink) both;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ---- 篩選列（捲動時黏在上方） ---- */
+.controls {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: color-mix(in oklab, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px) saturate(1.1);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  border-block: var(--line) solid var(--border);
+}
+
+.controls-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--sp-4) var(--sp-6);
+  padding-block: var(--sp-4);
+}
+
+.ctl-grow {
+  flex: 1 1 12rem;
+}
+
+.controls-toggle {
+  display: none;
+}
+
+/* ---- 提醒 ---- */
+.notice {
+  margin: var(--sp-5) 0 0;
+  padding-left: var(--sp-4);
+  border-left: var(--line-bold) solid var(--st-low);
+  font-size: var(--fs-caption);
+  color: var(--text-muted);
+}
+
+/* ---- 空位表 ---- */
+.board {
+  padding-top: var(--sp-7);
+  padding-bottom: var(--sp-8);
+}
+
+.board-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--sp-4) var(--sp-6);
+  margin-bottom: var(--sp-5);
+}
+
+.count {
+  font-size: var(--fs-caption);
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
+.grid-scroll {
+  position: relative;
+  overflow: auto;
+  max-height: calc(100vh - 9rem);
+  overscroll-behavior-x: contain;
+  border-radius: var(--r-m);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.grid-scroll:focus {
+  outline: none;
+}
+
+.grid {
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 100%;
+}
+
+.grid thead th {
+  position: sticky;
+  z-index: 3;
+  background: var(--surface);
+  font-weight: 400;
+  vertical-align: bottom;
+}
+
+.grid thead tr:first-child th {
+  top: 0;
+  height: 3.5rem;
+}
+
+.grid thead tr:nth-child(2) th {
+  top: 3.5rem;
+  border-bottom: var(--line) solid var(--border);
+}
+
+.grid .corner {
+  left: 0;
+  z-index: 5;
+  width: var(--name-col);
+  min-width: var(--name-col);
+  padding: 0 var(--sp-4) var(--sp-3) var(--sp-5);
+  text-align: left;
+  font-size: var(--fs-micro);
+  letter-spacing: 0.16em;
+  color: var(--text-faint);
+}
+
+.grid th.wk {
+  padding: 0 var(--sp-1);
+  border-left: var(--line) solid var(--border);
+}
+
+.grid th.night {
+  width: var(--cell-w);
+  min-width: var(--cell-w);
+}
+
+.grid th.night.wk-start,
+.grid td.wk-start {
+  border-left: var(--line) solid var(--border);
+}
+
+.grid .is-sel {
+  background: color-mix(in oklab, var(--st-open) 7%, var(--surface));
+}
+
+.grid tbody th {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: var(--surface);
+  padding-left: var(--sp-5);
+  font-weight: 400;
+  max-width: var(--name-col);
+}
+
+.grid tbody td {
+  padding: 0 var(--sp-1);
+}
+
+.grid tbody tr.hut-row:hover th,
+.grid tbody tr.hut-row:hover td:not(.is-sel) {
+  background: color-mix(in oklab, var(--text) 4%, var(--surface));
+}
+
+.grid tbody tr.hut-row + tr.hut-row th,
+.grid tbody tr.hut-row + tr.hut-row td {
+  border-top: var(--line) dashed color-mix(in oklab, var(--border) 70%, transparent);
+}
+
+.park-row th {
+  position: static;
+  padding: var(--sp-7) 0 var(--sp-3);
+  background: var(--surface);
+  text-align: left;
+}
+
+.park-row .park-title {
+  position: sticky;
+  left: var(--sp-5);
+  display: inline-flex;
+}
+
+.park-row:first-child th {
+  padding-top: var(--sp-5);
+}
+
+.park-title {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-4);
+  white-space: nowrap;
+}
+
+.park-title h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-title);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.park-title span,
+.park-title a {
+  font-size: var(--fs-caption);
+  color: var(--text-faint);
+}
+
+.empty {
+  padding: var(--sp-8) var(--sp-5);
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: var(--fs-title);
+  color: var(--text-muted);
+}
+
+.loading {
+  padding: var(--sp-9) var(--sp-5);
+  text-align: center;
+  font-size: var(--fs-caption);
+  color: var(--text-faint);
+  letter-spacing: 0.2em;
+}
+
+/* ---- 對話框（明細＋手動更新） ---- */
+.sheet {
+  width: min(30rem, calc(100vw - var(--sp-6)));
+  max-height: calc(100vh - var(--sp-8));
+  padding: var(--sp-6) var(--sp-6) var(--sp-7);
+  border: 0;
+  border-radius: var(--r-l);
+  background: var(--surface-raised);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+.sheet[open] {
+  animation: rise var(--dur-mid) var(--ease-ink);
+}
+
+.sheet::backdrop {
+  background: var(--scrim);
+  backdrop-filter: blur(2px);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+.sheet-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--sp-4);
+}
+
+.sheet-eyebrow {
+  margin: 0;
+  font-size: var(--fs-caption);
+  letter-spacing: 0.16em;
+  color: var(--text-faint);
+}
+
+.sheet-title {
+  margin: var(--sp-2) 0 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-headline);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+}
+
+.sheet-close {
+  flex: none;
+  width: var(--tap);
+  height: var(--tap);
+  margin: calc(var(--sp-3) * -1) calc(var(--sp-3) * -1) 0 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: var(--fs-title);
+}
+
+.sheet-close:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.sheet-status {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-4);
+  margin: var(--sp-6) 0 var(--sp-5);
+  padding-bottom: var(--sp-5);
+  border-bottom: var(--line) solid var(--border);
+}
+
+.sheet-status .big {
+  font-family: var(--font-num);
+  font-size: var(--fs-display);
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.sheet-status .big.is-word {
+  font-family: var(--font-display);
+  font-size: var(--fs-headline);
+}
+
+.sheet-status p {
+  margin: 0;
+  font-size: var(--fs-caption);
+  color: var(--text-muted);
+  line-height: var(--lh-snug);
+}
+
+.sheet-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  margin-top: var(--sp-6);
+}
+
+.sheet-note {
+  margin: var(--sp-5) 0 0;
+  font-size: var(--fs-caption);
+  color: var(--text-faint);
+}
+
+.sheet-feedback {
+  margin: var(--sp-4) 0 0;
+  font-size: var(--fs-caption);
+  color: var(--text-muted);
+}
+
+.sheet-feedback code {
+  font-size: var(--fs-micro);
+}
+
+/* ---- 通知 ---- */
+.toasts {
+  position: fixed;
+  left: var(--sp-5);
+  bottom: var(--sp-5);
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  pointer-events: none;
+}
+
+.toast {
+  max-width: 22rem;
+  padding: var(--sp-4) var(--sp-5);
+  border-radius: var(--r-m);
+  background: var(--text);
+  color: var(--bg);
+  font-size: var(--fs-caption);
+  box-shadow: var(--shadow);
+  animation: rise var(--dur-mid) var(--ease-ink);
+}
+
+/* ---- 頁尾 ---- */
+.foot {
+  padding-top: var(--sp-6);
+  padding-bottom: var(--sp-8);
+  border-top: var(--line) solid var(--border);
+  font-size: var(--fs-caption);
+  color: var(--text-faint);
+  line-height: var(--lh-body);
+}
+
+.foot p {
+  margin: 0;
+  max-width: 46em;
+}
+
+.foot p + p {
+  margin-top: var(--sp-3);
+}
