@@ -1,0 +1,36 @@
+{
+  "fetched_at": "2026-11-27T22:05:41.811815+07:00",
+  "months_ahead": 2,
+  "request_interval_seconds": 1.5,
+  "user_agent": "TaiwanHutAvailability/1.0 (+https://github.com/taiwan-hut-availability; polite-scraper; interval=1.5s)",
+  "total_huts": 76,
+  "success_count": 76,
+  "failed_count": 0,
+  "failed_huts": [],
+  "parks": {
+    "taroko": {
+      "supported": true,
+      "strategy": "http_postback",
+      "total_huts": 15,
+      "success_count": 15,
+      "failed_count": 0,
+      "failed_huts": []
+    },
+    "sheipa": {
+      "supported": true,
+      "strategy": "http_postback",
+      "total_huts": 34,
+      "success_count": 34,
+      "failed_count": 0,
+      "failed_huts": []
+    },
+    "yushan": {
+      "supported": true,
+      "strategy": "http_postback",
+      "total_huts": 27,
+      "success_count": 27,
+      "failed_count": 0,
+      "failed_huts": []
+    }
+  }
+}

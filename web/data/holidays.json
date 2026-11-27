@@ -1,0 +1,187 @@
+{
+  "source": "行政院人事行政總處 政府行政機關辦公日曆表（內建 2026–2027 國定假日與連假清單）",
+  "source_url": "https://www.dgpa.gov.tw/informationlist?uid=30",
+  "years": [
+    2026,
+    2027
+  ],
+  "holidays": {
+    "2026-01-01": {
+      "name": "元旦",
+      "is_holiday": true
+    },
+    "2026-02-15": {
+      "name": "小年夜",
+      "is_holiday": true
+    },
+    "2026-02-16": {
+      "name": "除夕",
+      "is_holiday": true
+    },
+    "2026-02-17": {
+      "name": "春節初一",
+      "is_holiday": true
+    },
+    "2026-02-18": {
+      "name": "春節初二",
+      "is_holiday": true
+    },
+    "2026-02-19": {
+      "name": "春節初三",
+      "is_holiday": true
+    },
+    "2026-02-20": {
+      "name": "春節補假",
+      "is_holiday": true
+    },
+    "2026-02-27": {
+      "name": "和平紀念日補假",
+      "is_holiday": true
+    },
+    "2026-02-28": {
+      "name": "和平紀念日",
+      "is_holiday": true
+    },
+    "2026-04-03": {
+      "name": "兒童節補假",
+      "is_holiday": true
+    },
+    "2026-04-04": {
+      "name": "兒童節",
+      "is_holiday": true
+    },
+    "2026-04-05": {
+      "name": "清明節",
+      "is_holiday": true
+    },
+    "2026-04-06": {
+      "name": "清明節補假",
+      "is_holiday": true
+    },
+    "2026-05-01": {
+      "name": "勞動節",
+      "is_holiday": true
+    },
+    "2026-06-19": {
+      "name": "端午節",
+      "is_holiday": true
+    },
+    "2026-09-25": {
+      "name": "中秋節",
+      "is_holiday": true
+    },
+    "2026-09-28": {
+      "name": "教師節",
+      "is_holiday": true
+    },
+    "2026-10-09": {
+      "name": "國慶日補假",
+      "is_holiday": true
+    },
+    "2026-10-10": {
+      "name": "國慶日",
+      "is_holiday": true
+    },
+    "2026-10-25": {
+      "name": "臺灣光復節",
+      "is_holiday": true
+    },
+    "2026-10-26": {
+      "name": "臺灣光復節補假",
+      "is_holiday": true
+    },
+    "2026-12-25": {
+      "name": "行憲紀念日",
+      "is_holiday": true
+    },
+    "2027-01-01": {
+      "name": "元旦",
+      "is_holiday": true
+    },
+    "2027-02-05": {
+      "name": "小年夜",
+      "is_holiday": true
+    },
+    "2027-02-06": {
+      "name": "除夕",
+      "is_holiday": true
+    },
+    "2027-02-07": {
+      "name": "春節初一",
+      "is_holiday": true
+    },
+    "2027-02-08": {
+      "name": "春節初二",
+      "is_holiday": true
+    },
+    "2027-02-09": {
+      "name": "春節初三",
+      "is_holiday": true
+    },
+    "2027-02-10": {
+      "name": "春節補假",
+      "is_holiday": true
+    },
+    "2027-02-28": {
+      "name": "和平紀念日",
+      "is_holiday": true
+    },
+    "2027-03-01": {
+      "name": "和平紀念日補假",
+      "is_holiday": true
+    },
+    "2027-04-04": {
+      "name": "兒童節",
+      "is_holiday": true
+    },
+    "2027-04-05": {
+      "name": "清明節",
+      "is_holiday": true
+    },
+    "2027-04-06": {
+      "name": "兒童節補假",
+      "is_holiday": true
+    },
+    "2027-04-30": {
+      "name": "勞動節補假",
+      "is_holiday": true
+    },
+    "2027-05-01": {
+      "name": "勞動節",
+      "is_holiday": true
+    },
+    "2027-06-09": {
+      "name": "端午節",
+      "is_holiday": true
+    },
+    "2027-09-15": {
+      "name": "中秋節",
+      "is_holiday": true
+    },
+    "2027-09-28": {
+      "name": "教師節",
+      "is_holiday": true
+    },
+    "2027-10-10": {
+      "name": "國慶日",
+      "is_holiday": true
+    },
+    "2027-10-11": {
+      "name": "國慶日補假",
+      "is_holiday": true
+    },
+    "2027-10-25": {
+      "name": "臺灣光復節",
+      "is_holiday": true
+    },
+    "2027-12-24": {
+      "name": "行憲紀念日補假",
+      "is_holiday": true
+    },
+    "2027-12-25": {
+      "name": "行憲紀念日",
+      "is_holiday": true
+    }
+  },
+  "makeup_workdays": {}
+}

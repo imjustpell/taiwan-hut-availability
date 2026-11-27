@@ -1,0 +1,1142 @@
+[
+  {
+    "id": "taroko_124",
+    "park": "taroko",
+    "node_id": "124",
+    "name": "黑水塘山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 6,
+      "weekday_tents": 0,
+      "holiday_beds": 6,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_4.aspx?node_id=124"
+  },
+  {
+    "id": "taroko_125",
+    "park": "taroko",
+    "node_id": "125",
+    "name": "成功山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 34,
+      "weekday_tents": 0,
+      "holiday_beds": 34,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_4.aspx?node_id=125"
+  },
+  {
+    "id": "taroko_126",
+    "park": "taroko",
+    "node_id": "126",
+    "name": "成功二號堡",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 8,
+      "weekday_tents": 0,
+      "holiday_beds": 8,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_4.aspx?node_id=126"
+  },
+  {
+    "id": "taroko_127",
+    "park": "taroko",
+    "node_id": "127",
+    "name": "奇萊山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 40,
+      "weekday_tents": 0,
+      "holiday_beds": 40,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_4.aspx?node_id=127"
+  },
+  {
+    "id": "taroko_149",
+    "park": "taroko",
+    "node_id": "149",
+    "name": "雲稜山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 65,
+      "weekday_tents": 0,
+      "holiday_beds": 65,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_4.aspx?node_id=149"
+  },
+  {
+    "id": "taroko_151",
+    "park": "taroko",
+    "node_id": "151",
+    "name": "審馬陣山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 10,
+      "weekday_tents": 0,
+      "holiday_beds": 10,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_4.aspx?node_id=151"
+  },
+  {
+    "id": "taroko_152",
+    "park": "taroko",
+    "node_id": "152",
+    "name": "南湖山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 38,
+      "weekday_tents": 0,
+      "holiday_beds": 38,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_4.aspx?node_id=152"
+  },
+  {
+    "id": "taroko_626",
+    "park": "taroko",
+    "node_id": "626",
+    "name": "鋸東避難小屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 14,
+      "weekday_tents": 0,
+      "holiday_beds": 14,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_4.aspx?node_id=626"
+  },
+  {
+    "id": "taroko_627",
+    "park": "taroko",
+    "node_id": "627",
+    "name": "屏風避難山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 28,
+      "weekday_tents": 0,
+      "holiday_beds": 28,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_4.aspx?node_id=627"
+  },
+  {
+    "id": "taroko_691",
+    "park": "taroko",
+    "node_id": "691",
+    "name": "磐石中峰避難小屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 12,
+      "weekday_tents": 0,
+      "holiday_beds": 12,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_4.aspx?node_id=691"
+  },
+  {
+    "id": "taroko_692",
+    "park": "taroko",
+    "node_id": "692",
+    "name": "三叉營地避難小屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 12,
+      "weekday_tents": 0,
+      "holiday_beds": 12,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_4.aspx?node_id=692"
+  },
+  {
+    "id": "taroko_693",
+    "park": "taroko",
+    "node_id": "693",
+    "name": "大理石營地避難小屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 12,
+      "weekday_tents": 0,
+      "holiday_beds": 12,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_4.aspx?node_id=693"
+  },
+  {
+    "id": "taroko_697",
+    "park": "taroko",
+    "node_id": "697",
+    "name": "天空營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 0,
+      "holiday_beds": 0,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_4.aspx?node_id=697"
+  },
+  {
+    "id": "taroko_666",
+    "park": "taroko",
+    "node_id": "666",
+    "name": "雲稜營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 14,
+      "holiday_beds": 0,
+      "holiday_tents": 14
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_4.aspx?node_id=666"
+  },
+  {
+    "id": "taroko_667",
+    "park": "taroko",
+    "node_id": "667",
+    "name": "南湖營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 14,
+      "holiday_beds": 0,
+      "holiday_tents": 14
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_4.aspx?node_id=667"
+  },
+  {
+    "id": "sheipa_675",
+    "park": "sheipa",
+    "node_id": "675",
+    "name": "三六九臨時營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 24,
+      "holiday_beds": 0,
+      "holiday_tents": 24
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=675"
+  },
+  {
+    "id": "sheipa_10",
+    "park": "sheipa",
+    "node_id": "10",
+    "name": "七卡山莊",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 106,
+      "weekday_tents": 0,
+      "holiday_beds": 106,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=10"
+  },
+  {
+    "id": "sheipa_386",
+    "park": "sheipa",
+    "node_id": "386",
+    "name": "七卡營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 30,
+      "holiday_beds": 0,
+      "holiday_tents": 30
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=386"
+  },
+  {
+    "id": "sheipa_13",
+    "park": "sheipa",
+    "node_id": "13",
+    "name": "三六九山莊",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 106,
+      "weekday_tents": 0,
+      "holiday_beds": 106,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=13"
+  },
+  {
+    "id": "sheipa_17",
+    "park": "sheipa",
+    "node_id": "17",
+    "name": "翠池山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 12,
+      "weekday_tents": 0,
+      "holiday_beds": 12,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=17"
+  },
+  {
+    "id": "sheipa_387",
+    "park": "sheipa",
+    "node_id": "387",
+    "name": "翠池營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 20,
+      "holiday_beds": 0,
+      "holiday_tents": 20
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=387"
+  },
+  {
+    "id": "sheipa_58",
+    "park": "sheipa",
+    "node_id": "58",
+    "name": "桃山山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 19,
+      "weekday_tents": 0,
+      "holiday_beds": 19,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=58"
+  },
+  {
+    "id": "sheipa_409",
+    "park": "sheipa",
+    "node_id": "409",
+    "name": "桃山營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 8,
+      "holiday_beds": 0,
+      "holiday_tents": 8
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=409"
+  },
+  {
+    "id": "sheipa_63",
+    "park": "sheipa",
+    "node_id": "63",
+    "name": "新達山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 34,
+      "weekday_tents": 0,
+      "holiday_beds": 34,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=63"
+  },
+  {
+    "id": "sheipa_411",
+    "park": "sheipa",
+    "node_id": "411",
+    "name": "新達營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 20,
+      "holiday_beds": 0,
+      "holiday_tents": 20
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=411"
+  },
+  {
+    "id": "sheipa_412",
+    "park": "sheipa",
+    "node_id": "412",
+    "name": "馬達拉溪登山口宿營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 30,
+      "holiday_beds": 0,
+      "holiday_tents": 30
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=412"
+  },
+  {
+    "id": "sheipa_68",
+    "park": "sheipa",
+    "node_id": "68",
+    "name": "九九山莊",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 70,
+      "weekday_tents": 0,
+      "holiday_beds": 70,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=68"
+  },
+  {
+    "id": "sheipa_304",
+    "park": "sheipa",
+    "node_id": "304",
+    "name": "中霸山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 12,
+      "weekday_tents": 0,
+      "holiday_beds": 12,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=304"
+  },
+  {
+    "id": "sheipa_389",
+    "park": "sheipa",
+    "node_id": "389",
+    "name": "賽良久營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 12,
+      "holiday_beds": 0,
+      "holiday_tents": 12
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=389"
+  },
+  {
+    "id": "sheipa_671",
+    "park": "sheipa",
+    "node_id": "671",
+    "name": "瓢簞山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 15,
+      "weekday_tents": 0,
+      "holiday_beds": 15,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=671"
+  },
+  {
+    "id": "sheipa_672",
+    "park": "sheipa",
+    "node_id": "672",
+    "name": "瓢簞營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 13,
+      "holiday_beds": 0,
+      "holiday_tents": 13
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=672"
+  },
+  {
+    "id": "sheipa_391",
+    "park": "sheipa",
+    "node_id": "391",
+    "name": "雪山山莊舊址營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 18,
+      "holiday_beds": 0,
+      "holiday_tents": 18
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=391"
+  },
+  {
+    "id": "sheipa_670",
+    "park": "sheipa",
+    "node_id": "670",
+    "name": "油婆蘭山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 15,
+      "weekday_tents": 0,
+      "holiday_beds": 15,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=670"
+  },
+  {
+    "id": "sheipa_673",
+    "park": "sheipa",
+    "node_id": "673",
+    "name": "油婆蘭營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 25,
+      "holiday_beds": 0,
+      "holiday_tents": 25
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=673"
+  },
+  {
+    "id": "sheipa_393",
+    "park": "sheipa",
+    "node_id": "393",
+    "name": "完美谷營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 18,
+      "holiday_beds": 0,
+      "holiday_tents": 18
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=393"
+  },
+  {
+    "id": "sheipa_394",
+    "park": "sheipa",
+    "node_id": "394",
+    "name": "17K營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 24,
+      "holiday_beds": 0,
+      "holiday_tents": 24
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=394"
+  },
+  {
+    "id": "sheipa_395",
+    "park": "sheipa",
+    "node_id": "395",
+    "name": "26K營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 24,
+      "holiday_beds": 0,
+      "holiday_tents": 24
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=395"
+  },
+  {
+    "id": "sheipa_396",
+    "park": "sheipa",
+    "node_id": "396",
+    "name": "28K營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 24,
+      "holiday_beds": 0,
+      "holiday_tents": 24
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=396"
+  },
+  {
+    "id": "sheipa_400",
+    "park": "sheipa",
+    "node_id": "400",
+    "name": "匹匹達山東鞍營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 24,
+      "holiday_beds": 0,
+      "holiday_tents": 24
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=400"
+  },
+  {
+    "id": "sheipa_401",
+    "park": "sheipa",
+    "node_id": "401",
+    "name": "奇峻山營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 24,
+      "holiday_beds": 0,
+      "holiday_tents": 24
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=401"
+  },
+  {
+    "id": "sheipa_397",
+    "park": "sheipa",
+    "node_id": "397",
+    "name": "弓水營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 8,
+      "holiday_beds": 0,
+      "holiday_tents": 8
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=397"
+  },
+  {
+    "id": "sheipa_398",
+    "park": "sheipa",
+    "node_id": "398",
+    "name": "大南山西鞍營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 24,
+      "holiday_beds": 0,
+      "holiday_tents": 24
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=398"
+  },
+  {
+    "id": "sheipa_399",
+    "park": "sheipa",
+    "node_id": "399",
+    "name": "火石山下營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 12,
+      "holiday_beds": 0,
+      "holiday_tents": 12
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=399"
+  },
+  {
+    "id": "sheipa_85",
+    "park": "sheipa",
+    "node_id": "85",
+    "name": "雪北山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 25,
+      "weekday_tents": 0,
+      "holiday_beds": 25,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=85"
+  },
+  {
+    "id": "sheipa_83",
+    "park": "sheipa",
+    "node_id": "83",
+    "name": "素密達山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 24,
+      "weekday_tents": 0,
+      "holiday_beds": 24,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=83"
+  },
+  {
+    "id": "sheipa_79",
+    "park": "sheipa",
+    "node_id": "79",
+    "name": "霸南山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 15,
+      "weekday_tents": 0,
+      "holiday_beds": 15,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=79"
+  },
+  {
+    "id": "sheipa_413",
+    "park": "sheipa",
+    "node_id": "413",
+    "name": "馬洋山前營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 30,
+      "holiday_beds": 0,
+      "holiday_tents": 30
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=413"
+  },
+  {
+    "id": "sheipa_414",
+    "park": "sheipa",
+    "node_id": "414",
+    "name": "馬洋池營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 30,
+      "holiday_beds": 0,
+      "holiday_tents": 30
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=414"
+  },
+  {
+    "id": "sheipa_382",
+    "park": "sheipa",
+    "node_id": "382",
+    "name": "雪山圈谷營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 30,
+      "holiday_beds": 0,
+      "holiday_tents": 30
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_1.aspx?node_id=382"
+  },
+  {
+    "id": "yushan_3",
+    "park": "yushan",
+    "node_id": "3",
+    "name": "排雲山莊",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 136,
+      "weekday_tents": 0,
+      "holiday_beds": 136,
+      "holiday_tents": 0
+    },
+    "booking_mode": "lottery",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=3"
+  },
+  {
+    "id": "yushan_4",
+    "park": "yushan",
+    "node_id": "4",
+    "name": "圓峰山屋/營地",
+    "kind": "both",
+    "capacity": {
+      "weekday_beds": 15,
+      "weekday_tents": 9,
+      "holiday_beds": 15,
+      "holiday_tents": 9
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=4"
+  },
+  {
+    "id": "yushan_221",
+    "park": "yushan",
+    "node_id": "221",
+    "name": "荖濃溪營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 24,
+      "holiday_beds": 0,
+      "holiday_tents": 24
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=221"
+  },
+  {
+    "id": "yushan_222",
+    "park": "yushan",
+    "node_id": "222",
+    "name": "樂樂山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 12,
+      "weekday_tents": 0,
+      "holiday_beds": 12,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=222"
+  },
+  {
+    "id": "yushan_727",
+    "park": "yushan",
+    "node_id": "727",
+    "name": "觀高山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 42,
+      "weekday_tents": 0,
+      "holiday_beds": 42,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=727"
+  },
+  {
+    "id": "yushan_223",
+    "park": "yushan",
+    "node_id": "223",
+    "name": "巴奈伊克營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 12,
+      "holiday_beds": 0,
+      "holiday_tents": 12
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=223"
+  },
+  {
+    "id": "yushan_224",
+    "park": "yushan",
+    "node_id": "224",
+    "name": "中央金礦山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 20,
+      "weekday_tents": 0,
+      "holiday_beds": 20,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=224"
+  },
+  {
+    "id": "yushan_225",
+    "park": "yushan",
+    "node_id": "225",
+    "name": "白洋金礦山屋/營地",
+    "kind": "both",
+    "capacity": {
+      "weekday_beds": 12,
+      "weekday_tents": 8,
+      "holiday_beds": 12,
+      "holiday_tents": 8
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=225"
+  },
+  {
+    "id": "yushan_226",
+    "park": "yushan",
+    "node_id": "226",
+    "name": "杜鵑營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 0,
+      "holiday_beds": 0,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=226"
+  },
+  {
+    "id": "yushan_227",
+    "park": "yushan",
+    "node_id": "227",
+    "name": "南營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 0,
+      "holiday_beds": 0,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=227"
+  },
+  {
+    "id": "yushan_228",
+    "park": "yushan",
+    "node_id": "228",
+    "name": "大水窟山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 20,
+      "weekday_tents": 0,
+      "holiday_beds": 20,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=228"
+  },
+  {
+    "id": "yushan_229",
+    "park": "yushan",
+    "node_id": "229",
+    "name": "塔芬谷山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 20,
+      "weekday_tents": 0,
+      "holiday_beds": 20,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=229"
+  },
+  {
+    "id": "yushan_230",
+    "park": "yushan",
+    "node_id": "230",
+    "name": "轆轆谷山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 20,
+      "weekday_tents": 0,
+      "holiday_beds": 20,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=230"
+  },
+  {
+    "id": "yushan_231",
+    "park": "yushan",
+    "node_id": "231",
+    "name": "雲峰下三叉營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 20,
+      "holiday_beds": 0,
+      "holiday_tents": 20
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=231"
+  },
+  {
+    "id": "yushan_232",
+    "park": "yushan",
+    "node_id": "232",
+    "name": "拉庫音溪山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 20,
+      "weekday_tents": 0,
+      "holiday_beds": 20,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=232"
+  },
+  {
+    "id": "yushan_233",
+    "park": "yushan",
+    "node_id": "233",
+    "name": "馬博山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 20,
+      "weekday_tents": 0,
+      "holiday_beds": 20,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=233"
+  },
+  {
+    "id": "yushan_234",
+    "park": "yushan",
+    "node_id": "234",
+    "name": "馬利加南山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 20,
+      "weekday_tents": 0,
+      "holiday_beds": 20,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=234"
+  },
+  {
+    "id": "yushan_235",
+    "park": "yushan",
+    "node_id": "235",
+    "name": "馬布谷山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 20,
+      "weekday_tents": 0,
+      "holiday_beds": 20,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=235"
+  },
+  {
+    "id": "yushan_6",
+    "park": "yushan",
+    "node_id": "6",
+    "name": "佳心營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 24,
+      "holiday_beds": 0,
+      "holiday_tents": 24
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=6"
+  },
+  {
+    "id": "yushan_7",
+    "park": "yushan",
+    "node_id": "7",
+    "name": "瓦拉米山屋/營地",
+    "kind": "both",
+    "capacity": {
+      "weekday_beds": 24,
+      "weekday_tents": 24,
+      "holiday_beds": 24,
+      "holiday_tents": 24
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=7"
+  },
+  {
+    "id": "yushan_215",
+    "park": "yushan",
+    "node_id": "215",
+    "name": "抱崖山屋/營地",
+    "kind": "both",
+    "capacity": {
+      "weekday_beds": 16,
+      "weekday_tents": 4,
+      "holiday_beds": 16,
+      "holiday_tents": 4
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=215"
+  },
+  {
+    "id": "yushan_236",
+    "park": "yushan",
+    "node_id": "236",
+    "name": "多美麗營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 12,
+      "holiday_beds": 0,
+      "holiday_tents": 12
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=236"
+  },
+  {
+    "id": "yushan_237",
+    "park": "yushan",
+    "node_id": "237",
+    "name": "大分山屋",
+    "kind": "hut",
+    "capacity": {
+      "weekday_beds": 20,
+      "weekday_tents": 0,
+      "holiday_beds": 20,
+      "holiday_tents": 0
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=237"
+  },
+  {
+    "id": "yushan_238",
+    "park": "yushan",
+    "node_id": "238",
+    "name": "托馬斯營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 20,
+      "holiday_beds": 0,
+      "holiday_tents": 20
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=238"
+  },
+  {
+    "id": "yushan_239",
+    "park": "yushan",
+    "node_id": "239",
+    "name": "庫哈諾辛山屋/營地",
+    "kind": "both",
+    "capacity": {
+      "weekday_beds": 24,
+      "weekday_tents": 12,
+      "holiday_beds": 24,
+      "holiday_tents": 12
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=239"
+  },
+  {
+    "id": "yushan_240",
+    "park": "yushan",
+    "node_id": "240",
+    "name": "連理山前(桃源)營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 24,
+      "holiday_beds": 0,
+      "holiday_tents": 24
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=240"
+  },
+  {
+    "id": "yushan_241",
+    "park": "yushan",
+    "node_id": "241",
+    "name": "新仙山前營地",
+    "kind": "camp",
+    "capacity": {
+      "weekday_beds": 0,
+      "weekday_tents": 24,
+      "holiday_beds": 0,
+      "holiday_tents": 24
+    },
+    "booking_mode": "first_come",
+    "source_url": "https://hike.taiwan.gov.tw/bed_6.aspx?node_id=241"
+  }
+]
