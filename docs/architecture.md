@@ -4,7 +4,7 @@
 
 本專案採用 **「離線禮貌爬蟲產出靜態 JSON ＋ 純靜態前端矩陣渲染」** 的無伺服器（Serverless Static）架構：
 1. **不在瀏覽器端直接對官方網站發送任何請求**：避免 CORS 問題，更避免大量山友同時開啟網頁時對官方伺服器造成負擔。
-2. **定時單一併發禮貌更新**：由本機 `run_scrape` 或 GitHub Actions 每 2 小時以單一併發、每次請求間隔 1.5 秒以上之禮貌速率更新 `data/*.json`，並自動部署至 GitHub Pages。
+2. **定時單一併發禮貌更新**：由本機 `run_scrape` 或 GitHub Actions 每 30 分鐘以單一併發、每次請求間隔 1.5 秒以上之禮貌速率更新 `data/*.json`，並自動部署至 Firebase Hosting（https://taiwan-hut-availability.web.app）。
 
 ```mermaid
 flowchart LR

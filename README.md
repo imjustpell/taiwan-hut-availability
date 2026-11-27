@@ -88,32 +88,21 @@ uv pip install --python .venv httpx beautifulsoup4 selectolax pytest
 
 ---
 
-## ☁️ 自動更新與 GitHub Pages 部署設定說明
+## ☁️ 自動更新與部署（Firebase Hosting）
 
-專案已內建 `.github/workflows/scrape-and-deploy.yml`，設定為**每 2 小時自動執行一次禮貌爬蟲 → 將更新後的 `data/*.json` commit 回 repo → 自動部署純靜態網站至 GitHub Pages**。
+網站：**https://taiwan-hut-availability.web.app**
 
-### 手動啟用步驟（首次部署）
-1. **建立 GitHub Repository 並推送程式碼**：
-   ```powershell
-   git remote add origin https://github.com/<你的帳號>/taiwan-hut-availability.git
-   git branch -M main
-   git push -u origin main
-   ```
-2. **開啟 GitHub Actions 寫入權限**：
-   - 進入 GitHub Repo → **Settings** → **Actions** → **General** → **Workflow permissions**
-   - 選擇 **Read and write permissions**，點擊 **Save**。
-3. **啟用 GitHub Pages（使用 GitHub Actions 來源）**：
-   - 進入 GitHub Repo → **Settings** → **Pages**
-   - 在 **Build and deployment** 下的 **Source** 選擇 **GitHub Actions**。
-4. **手動觸發首次部署（或等待排程）**：
-   - 進入 **Actions** 頁籤 → 點選左側 **Scrape Hut Availability & Deploy GitHub Pages** → 點擊 **Run workflow**。
-   - 執行完成後（約 6 分鐘），即可於 `https://<你的帳號>.github.io/taiwan-hut-availability/` 瀏覽網站。
+`.github/workflows/scrape-and-deploy.yml` 每 **30 分鐘**跑一次：禮貌爬蟲抓最新空位 → 資料同步到 `web/data/` → 部署 `web/` 到 Firebase Hosting。推到 `main` 或在 Actions 頁按 **Run workflow** 也會觸發同一流程。爬到的資料不 commit 回倉庫，只部署。
+
+- **部署權限不存金鑰**：GitHub Actions 透過 Workload Identity 聯合換取 Google 短期憑證。GCP 專案 `taiwan-hut-availability` 的身分池 `github` 只接受 `imjustpell/taiwan-hut-availability` 這個倉庫，部署身分是服務帳號 `github-deployer`（Firebase Hosting 管理員）。
+- **為什麼倉庫是公開的**：每 30 分鐘一次、每次約 7 分鐘，一個月約 1 萬分鐘。公開倉庫的 Actions 不限分鐘數；私人倉庫每月只有 2,000 分鐘免費。
+- **本機手動部署**：先跑 `.\run_scrape.ps1`，再跑 `npx firebase-tools deploy --only hosting`（需要已登入 gcloud 的應用程式預設憑證）。
 
 ---
 
 ## ⚠️ 已知限制與注意事項
 
-1. **非即時同步（每 2 小時批次更新）**：為遵守禮貌爬蟲原則（單一併發、每次請求間隔 1.5 秒），完整抓取 76 處山屋 × 3 個月需約 229 次請求（耗時約 5.8 分鐘），因此採用定時批次更新，頂部會清楚顯示「資料更新於 X 前」。
+1. **非即時同步（每 30 分鐘批次更新）**：為遵守禮貌爬蟲原則（單一併發、每次請求間隔 1.5 秒），完整抓取 76 處山屋 × 3 個月需約 229 次請求（耗時約 5.8 分鐘），因此採用定時批次更新，頂部會清楚顯示「資料更新於 X 前」。
 2. **各國家公園開放查詢窗口不同**：
    - **太魯閣**：開放當日起至 **往後 2 個月內**（超過 2 個月之日期官方日曆不顯示，本網站標為 `未開放`）。
    - **雪霸、玉山**：入園前 **5 日內**已截止申請（官方日曆僅顯示日期數字無名額，本網站標為 `未開放`）；遠期日曆可查詢至 2～4 個月。
